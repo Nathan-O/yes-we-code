@@ -1,10 +1,10 @@
 var express = require('express'),
 	app = express(),
 	path = require('path'),
-	views = path.join(process.cwd(), 'views');
+	views = path.join(process.cwd(), 'views/');
 
 app.get('/', function (req, res) {
-	var homepage = path.join(views, index.html); 
+	var homepage = path.join(views, 'index.html'); 
 	res.send(homepage);
 });
 
