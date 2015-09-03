@@ -1,0 +1,21 @@
+{
+  "name": "yes-we-code",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kealalusk/yes-we-code",
+  "authors": [
+    "Keala Lusk <contactkeala@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "underscore": "~1.8.3"
+  }
+}
