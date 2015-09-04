@@ -3,9 +3,11 @@ var express = require('express'),
 	path = require('path'),
 	views = path.join(process.cwd(), 'views/');
 
+app.use("/static", express.static("public"));
+
 app.get('/', function (req, res) {
 	var homepage = path.join(views, 'index.html'); 
-	res.send(homepage);
+	res.sendFile(homepage);
 });
 
 app.get('/about', function (req, res) {
