@@ -2,7 +2,8 @@ h1 {
    font-size: 90px;
    color: white;
    text-align: center;
-   font-family: 'Quicksand';
+   font-family: 'Raleway';
+   padding: 50px 100px -60px 100px;
 }
 body {
   background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
