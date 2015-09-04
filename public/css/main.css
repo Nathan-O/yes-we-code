@@ -1,14 +1,30 @@
-header {
-    font-family: 'Poiret One', Helvetica;
-    background-size: cover;
-    background-color: white;
-}
 h1 {
-    color: white;
-    font-family: 'Poiret One', Helvetica;
-    font-size: 150px;
-    text-align: center;
+   font-size: 90px;
+   color: white;
+   text-align: center;
+   font-family: 'Quicksand';
+   padding: 100px 200px 0px 200px;
 }
 body {
-	background-color: black;
+  background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
+  background-size: cover;
+}
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 90px;
+    height: 90px;
+    padding-top: 0;
+    font-size: 32px;
+    color: white;
+    font-family: 'Megrim';
 }
