@@ -29,3 +29,10 @@ body {
     font-family: 'Raleway';
     padding-right: 40px;
 }
+form {
+	color: black;
+	font-size: 30px;
+}
+.pink {
+	color:#F62459;
+}
