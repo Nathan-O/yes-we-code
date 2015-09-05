@@ -38,3 +38,10 @@ form {
 .pink {
 	color:#F62459;
 }
+p {
+  color: white;
+  font-size: 32px;
+  text-align: left;
+  padding-left: 100px;
+  padding-right: 100px;
+}
