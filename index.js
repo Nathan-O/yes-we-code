@@ -20,6 +20,11 @@ app.get('/login', function (req, res) {
 	res.sendFile(loginPath);
 });
 
+app.get('/signup', function (req, res) {
+	var signupPath = path.join(views, 'signup.html');
+	res.sendFile(signupPath);
+});
+
 app.listen(3000, function () {
 	console.log('Code like a girl');
 });

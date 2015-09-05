@@ -6,8 +6,10 @@ h1 {
    padding: 50px 100px -60px 100px;
 }
 body {
-  background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
-  background-size: cover;
+   text-align: center;
+   font-family:'Raleway';
+   background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
+   background-size: cover;
 }
 @media (min-width: 768px) {
     .navbar .navbar-nav {
