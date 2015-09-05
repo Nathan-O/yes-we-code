@@ -1,10 +1,17 @@
 var express = require('express'),
 	app = express(),
 	path = require('path'),
-	views = path.join(process.cwd(), 'views/');	
-	bodyParser = require('body-parser');
+	views = path.join(process.cwd(), 'views/'),	
+	bodyParser = require('body-parser'),
+	cookieParser = require('cookie-parser');
+
+//parse the posted data and cookie data
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(cookieParser("A secret"));
 
 app.use("/static", express.static('public'));
+
+/* Routes */
 
 app.get('/', function (req, res) {
 	var homePath = path.join(views, 'index.html'); 
@@ -26,9 +33,11 @@ app.get('/signup', function (req, res) {
 	res.sendFile(signupPath);
 });
 
-app.get(['/login', '/api/profile'], function (req, res) {
-	var username = req.params.body;
-	var password = req.params.body;
+/* API endpoints*/
+
+app.post(['/login', '/api/profile'], function (req, res) {
+	var username = req.body.username;
+	var password = req.body.password;
 });
 
 
