@@ -1,9 +1,10 @@
 var express = require('express'),
 	app = express(),
 	path = require('path'),
-	views = path.join(process.cwd(), 'views/');
+	views = path.join(process.cwd(), 'views/');	
+	bodyParser = require('body-parser');
 
-app.use("/static", express.static("public"));
+app.use("/static", express.static('public'));
 
 app.get('/', function (req, res) {
 	var homePath = path.join(views, 'index.html'); 
@@ -24,6 +25,12 @@ app.get('/signup', function (req, res) {
 	var signupPath = path.join(views, 'signup.html');
 	res.sendFile(signupPath);
 });
+
+app.get(['/login', '/api/profile'], function (req, res) {
+	var username = req.params.body;
+	var password = req.params.body;
+});
+
 
 app.listen(3000, function () {
 	console.log('Code like a girl');
