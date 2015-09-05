@@ -21,10 +21,11 @@ body {
 }
 .navbar-brand,
 .navbar-nav li a {
-    line-height: 90px;
-    height: 90px;
+    line-height: 70px;
+    height: 70px;
     padding-top: 0;
     font-size: 32px;
     color: white;
     font-family: 'Raleway';
+    padding-right: 40px;
 }
