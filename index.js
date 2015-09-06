@@ -4,7 +4,8 @@ var express = require('express'),
 	path = require('path'),
 	views = path.join(process.cwd(), 'views/'),	
 	bodyParser = require('body-parser'),
-	cookieParser = require('cookie-parser');
+	cookieParser = require('cookie-parser'),
+	bcrypt = require('bcrypt');
 
 //parse the posted data and cookie data
 app.use(bodyParser.urlencoded({extended:true}));
