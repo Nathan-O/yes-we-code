@@ -26,7 +26,7 @@ form {
 	font-size: 30px;
 }
 .pink {
-	color:#F62459;
+	color: #F62459;
 }
 p {
   color: white;
@@ -34,4 +34,10 @@ p {
   text-align: left;
   padding-left: 100px;
   padding-right: 100px;
+}
+#pink-btn {
+  background-color: #F62459;
+}
+.white-font {
+  color: white;
 }
