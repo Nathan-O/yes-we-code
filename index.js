@@ -1,5 +1,6 @@
 var express = require('express'),
 	app = express(),
+	db = require("./models"),
 	path = require('path'),
 	views = path.join(process.cwd(), 'views/'),	
 	bodyParser = require('body-parser'),
@@ -35,11 +36,29 @@ app.get('/signup', function (req, res) {
 
 /* API endpoints*/
 
-app.post(['/login', '/api/profile'], function (req, res) {
+app.post(['/signup', '/api/users'], function (req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
+	var newUser = {username: username, password: password};
+	db.User.create(newUser, function (err, user) {
+		if (err){console.log(err);}
+	res.cookie("guid", newUser._id);
+	});
+	res.redirect('/api/profile');
 });
 
+app.get('/api/profile', function (req, res) {
+	var guidID = req.cookies.guid;
+	db.User.findOne({_id: guidID}, function (err,user) {
+		if (err) { console.log(err);}
+		res.send({
+			request_headers: req.headers,
+			user: user || "Not Found"
+		});
+	});
+});
+
+/* Server */
 
 app.listen(3000, function () {
 	console.log('Code like a girl');
