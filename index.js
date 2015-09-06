@@ -41,15 +41,19 @@ app.post(['/signup', '/api/users'], function (req, res) {
 	var password = req.body.password;
 	var newUser = {username: username, password: password};
 	db.User.create(newUser, function (err, user) {
-		if (err){console.log(err);}
-	res.cookie("guid", newUser._id);
-	});
-	res.redirect('/api/profile');
+		if (user) {
+	      		res.cookie("guid", user._id, { signed: true });
+	            	res.redirect("/api/profile")
+		} else {
+	                res.redirect("/signup");
+		}
+  });	
 });
 
 app.get('/api/profile', function (req, res) {
-	var guidID = req.cookies.guid;
-	db.User.findOne({_id: guidID}, function (err,user) {
+	console.log(req.cookies)
+	var guid = req.signedCookies.guid;
+	db.User.findOne({_id: guid}, function (err,user) {
 		if (err) { console.log(err);}
 		res.send({
 			request_headers: req.headers,
