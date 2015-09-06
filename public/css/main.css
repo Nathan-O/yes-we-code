@@ -11,16 +11,6 @@ body {
    background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
    background-size: cover;
 }
-@media (min-width: 768px) {
-    .navbar .navbar-nav {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
-    }
-    .navbar .navbar-collapse {
-        text-align: center;
-    }
-}
 .navbar-brand,
 .navbar-nav li a {
     line-height: 70px;
