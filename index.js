@@ -35,10 +35,15 @@ app.get('/signup', function (req, res) {
 	res.sendFile(signupPath);
 });
 
+app.get('/profile', function (req, res) {
+	var profilePath = path.join(views, 'profile.html');
+	res.sendFile(profilePath);
+})
 /* API endpoints*/
 
 //creates a user session
 app.post(['/login', '/api/sessions'], function (req, res) {
+	
 	var username = req.body.username;
 	var password = req.body.password;
 	var returnUser = {username: username, password: password};
@@ -46,7 +51,7 @@ app.post(['/login', '/api/sessions'], function (req, res) {
 		if (err){console.log('No access for you!');}
 		if (user) {
 			res.cookie('guid', user._id, {signed: true});
-			res.redirect('/api/profile');
+			res.redirect('/profile');
 		} else {
 			res.redirect('/login');
 		}
@@ -55,16 +60,18 @@ app.post(['/login', '/api/sessions'], function (req, res) {
 
 //signs a user up and takes them to their profile
 app.post(['/signup', '/api/users'], function (req, res) {
-	var username = req.body.username;
-	var password = req.body.password;
-	var newUser = {username: username, password: password};
-	db.User.create(newUser, function (err, user) {
+
+	var user = req.body.user;
+	var username = user.username;
+	var password = user.password;
+
+  	db.User.createSecure(username, password, function(err, user) {
 		if (err){console.log(err);}
 		if (user) {
-	      		res.cookie('guid', user._id, {signed: true});
-	            	res.redirect('/api/profile');
+	      	res.cookie('guid', user._id, {signed: true});
+	        res.redirect('/profile');
 		} else {
-	                res.redirect('/signup');
+	        res.redirect('/signup');
 		}
   });	
 });

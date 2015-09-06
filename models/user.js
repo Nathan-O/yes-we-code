@@ -7,16 +7,44 @@ var userSchema = new Schema({
 		type: String,
 		required: true
 	},
-    	passwordDigest: {
+  passwordDigest: {
 		type: String,
-    		required: true
+    required: true
 	},
-    	createdAt: {
-		type: Date,
-    		default: Date.now()
+  createdAt: {
+    type: Date,
+    default: Date.now()
 	 }
 });
 
-var User = mongoose.model('User', userSchema);
+userSchema.statics.createSecure = function (username, password, cb) {
+  var _this = this;
+  bcrypt.genSalt(function (err, salt) {
+    bcrypt.hash(password, salt, function (err, hash) {
+      var user = {
+        username: username,
+        passwordDigest: hash
+      };
+      _this.create(user, cb);
+    });
+  });
+};
 
-module.exports = User;
+userSchema.statics.authenticate = function (username, password, cb) {
+  this.findOne({username: username}, function (err, user) {
+    if (user === null) {
+      cb('Can\'t find user with that username', null);
+    } else if (user.checkPassword(password)) {
+      cb(null, user);
+    } else {
+      cb('Password incorrect', user)
+    }
+  });
+};
+
+userSchema.methods.checkPassword = function (password) {
+  return bcrypt.compareSync(password, this.passwordDigest);
+};
+
+var user = mongoose.model('user', userSchema);
+module.exports = user;

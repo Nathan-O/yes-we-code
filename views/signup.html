@@ -20,7 +20,6 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 	<script src="/static/js/app.js"></script>
-
   </head>
   <body>
     <header>
@@ -36,8 +35,8 @@
        <br>
        <h1>Join the<span class="pink"> lovely</span> ladies of the coding community<span class="pink"> &#9829</span></h1>
     <form method="POST" action="/signup">
-  	<input required type="text" name="username" placeholder="Username"><br><br>
-    	<input required type="password" name="password" placeholder="Password"><br><br>
+  	<input required type="text" name="user[username]" placeholder="Username"><br><br>
+    	<input required type="password" name="user[password]" placeholder="Password"><br><br>
     	<input type="submit" value="Signup" class="white-font" id="pink-btn">
     </form>
   </body>
