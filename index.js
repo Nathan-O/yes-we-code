@@ -97,17 +97,18 @@ app.post(['/sessions', '/login'], function (req, res) {
 	var password = user.password;
 
 	db.User.authenticate(username, password, function (err, user) {
-		// if (err){console.log('No access for you!');}
-		// if (user) {
-		req.login(user);
-		// 	res.cookie('guid', user._id, {signed: true});
-		res.redirect('/profile');
-		// } else {
-		// 	res.redirect('/login');
-		// }
+		if (user){
+			req.login(user);
+		 	res.cookie('guid', user._id, {signed: true});
+			res.redirect('/profile');
+		} else if (err) {
+			console.log('No access for you!');
+			res.redirect('/');
+		} else {
+			res.redirect('/login');
+		}
 	});
 });
-
 
 // profile of current user
 app.get('/profile', function (req, res) {
@@ -136,18 +137,6 @@ app.delete(['/sessions', '/logout'], function (req, res) {
 	req.logout();
 	res.redirect('/');
 });
-
-// app.get('/api/profile', function (req, res) {
-// 	console.log(req.cookies);
-// 	var guid = req.signedCookies.guid;
-// 	db.User.findOne({_id: guid}, function (err,user) {
-// 		if (err) { console.log(err);}
-// 		res.send({
-// 			request_headers: req.headers,
-// 			user: user || 'Not Found'
-// 		});
-// 	});
-// });
 
 /* Server */
 

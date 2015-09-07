@@ -1,10 +1,12 @@
 h1 {
    font-size: 90px;
    color: white;
+   text-align: center;
    font-family: 'Raleway';
-   padding-left: 60px;
+   padding: 50px 100px -60px 100px;
 }
 body {
+   text-align: center;
    font-family:'Raleway';
    background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
    background-size: cover;
@@ -19,13 +21,25 @@ body {
     font-family: 'Raleway';
     padding-right: 40px;
 }
-.pink {
-	color: #F62459;
-}
-.logout-btn {
-  color: white;
-  background-color: #F62459;
+form {
+  color: black;
   font-size: 30px;
+}
+.pink {
+  color: #F62459;
+}
+p {
+  color: white;
+  font-size: 32px;
+  text-align: left;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+#pink-btn {
+  background-color: #F62459;
+}
+.white-font {
+  color: white;
 }
 #left-align {
   text-align: left;
