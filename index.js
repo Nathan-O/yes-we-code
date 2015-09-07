@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 
 // homepage route
 app.get('/', function (req, res) {
-	res.render('index');
+	res.render('home');
 });
 
 // information about the site route

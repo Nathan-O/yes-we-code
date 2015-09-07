@@ -28,13 +28,14 @@
          <ul class='nav navbar-nav navbar-right'>
           <li><a href='questions'>Questions</a></li>
           <li><a href='profile'>My Profile</a></li>
-          <li><a href='#'>Logout</a></li>
          </ul>
         </div>
        </nav>
     </header>
        <br>
-       <h1>Hey <span class='pink'><%= user.username %>!</span>&#9786</h1>
-	<br>
+       <h1>Hey there <span class='pink'><%= user.username %>!</span>&#9786</h1>
+       <form method="post" action="/logout?_method=DELETE">
+        <button type="submit">Logout</button>
+       </form>
   </body>
 </html>
