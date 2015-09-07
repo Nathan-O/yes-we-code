@@ -13,8 +13,6 @@ app.use(cookieParser('A secret'));
 
 app.use('/static', express.static('public'));
 
-/* Routes */
-
 app.get('/', function (req, res) {
 	var homePath = path.join(views, 'index.html'); 
 	res.sendFile(homePath);
@@ -38,8 +36,7 @@ app.get('/signup', function (req, res) {
 app.get('/profile', function (req, res) {
 	var profilePath = path.join(views, 'profile.html');
 	res.sendFile(profilePath);
-})
-/* API endpoints*/
+});
 
 //creates a user session
 app.post(['/login', '/api/sessions'], function (req, res) {
