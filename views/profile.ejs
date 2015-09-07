@@ -26,14 +26,16 @@
       <nav class="navbar navbar-default">
        <div class="container-fluid">
          <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Home</a></li>
+          <li><a href="questions">Questions</a></li>
+          <li><a href="profile">My Profile</a></li>
           <li><a href="about">About</a></li>
+          <li><a href="#">Logout</a></li>
          </ul>
         </div>
        </nav>
     </header>
        <br>
-       <h1>Hey <span class="pink">you</span>&#9786</h1>
+       <h1>Hey <span class="pink"><%= user.username %>!</span>&#9786</h1>
 	<br>
   </body>
 </html>

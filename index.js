@@ -92,8 +92,10 @@ app.post(['/users', '/signup'], function (req, res) {
 //creates a user session when login form is submitted
 app.post(['/sessions', '/login'], function (req, res) {
 	
-	var username = req.body.username;
-	var password = req.body.password;
+	var user = req.body.user;
+	var username = user.username;
+	var password = user.password;
+
 	db.User.authenticate(username, password, function (err, user) {
 		// if (err){console.log('No access for you!');}
 		// if (user) {
@@ -110,11 +112,22 @@ app.post(['/sessions', '/login'], function (req, res) {
 // profile of current user
 app.get('/profile', function (req, res) {
 	// user will only see profile page if logged in
+	req.currentUser(function (err, currentUser) {
+		if (currentUser === null) {
+			res.redirect('/');
+		} else {
+			res.render('profile', {user: currentUser});
+		}
+	});
+});
+
+app.get('/questions', function (req, res) {
+	// user will only see questions page if logged in
 	req.currentUser(function (err, user) {
 		if (user === null) {
 			res.redirect('/');
 		} else {
-			res.render('profile');
+			res.render('questions');
 		}
 	});
 });
