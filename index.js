@@ -2,6 +2,7 @@ var express = require('express'),
 	app = express(),
 	db = require('./models'),
 	path = require('path'),
+	session = require("express-session"),
 	views = path.join(process.cwd(), 'views/'),	
 	bodyParser = require('body-parser'),
 	cookieParser = require('cookie-parser'),
@@ -15,7 +16,7 @@ app.use('/static', express.static('public'));
 
 // creating the session
 app.use(session ({
-	secret: keygen._({specials: true}),
+	secret: 'secret key',
 	resave: false,
 	saveUninitialized: true
 	})
@@ -76,7 +77,9 @@ app.get('/profile', function (req, res) {
 		if (user === null) {
 			res.redirect('/');
 		} else {
-	res.sendFile(profilePath);
+			res.sendFile(profilePath);
+		}
+	});
 });
 
 //creates a user session when login form is submitted
