@@ -4,6 +4,7 @@ var express = require('express'),
 	db = require('./models'),
 	path = require('path'),
 	session = require("express-session"),
+	_ = require('underscore'),
 	ejs = require('ejs'),
     keygen = require('keygenerator'),	
 	methodOverride = require('method-override'),
@@ -130,6 +131,17 @@ app.get('/questions', function (req, res) {
 		} else {
 			res.render('questions');
 		}
+	});
+});
+
+app.post('/questions', function (req, res) {
+	var newQuestion = req.body;
+	db.Question.create(newQuestion, function (err, question_list) {
+		if (err) {
+			console.log(err);
+			return res.sendStatus(400);
+		}
+		res.send(question_list);
 	});
 });
 
