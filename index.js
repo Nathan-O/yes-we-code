@@ -77,6 +77,8 @@ app.post(['/users', '/signup'], function (req, res) {
 	var user = req.body.user;
 	var username = user.username;
 	var password = user.password;
+	// var language = user.language;
+	// var image = user.image;
 
   	db.User.createSecure(username, password, function(err, user) {
 		// if (err){console.log(err);}
