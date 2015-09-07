@@ -19,21 +19,19 @@ var userSchema = new Schema({
 
 userSchema.statics.createSecure = function (username, password, cb) {
   var _this = this;
-  bcrypt.genSalt(function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
+    bcrypt.hash(password, 10, function (err, hash) {
       var user = {
         username: username,
         passwordDigest: hash
       };
       _this.create(user, cb);
-    });
   });
 };
 
 userSchema.statics.authenticate = function (username, password, cb) {
   this.findOne({username: username}, function (err, user) {
     if (user === null) {
-      cb('Can\'t find user with that username', null);
+      cb('No user with that username', null);
     } else if (user.checkPassword(password)) {
       cb(null, user);
     } else {
