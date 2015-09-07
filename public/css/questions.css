@@ -3,10 +3,8 @@ h1 {
    color: white;
    text-align: left;
    font-family: 'Raleway';
-   padding: 50px 100px -60px 100px;
 }
 body {
-   text-align: center;
    font-family:'Raleway';
    background-color: #F62459;
 }
@@ -33,10 +31,4 @@ p {
   text-align: left;
   padding-left: 100px;
   padding-right: 100px;
-}
-#pink-btn {
-  background-color: #F62459;
-}
-.white-font {
-  color: white;
 }

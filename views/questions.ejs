@@ -33,7 +33,14 @@
         </div>
        </nav>
     </header>
-       <br>
-    <h1>Ask a question</h1><button type="button" class="btn btn-danger btn-lg" id="pink-btn">Post</button>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Ask a question <small>#ladiescode</small></h1>
+      </div>
+      <form method="POST" action="/questions">
+        <input required type="text" name="question" placeholder="Don't be shy!">
+        <input type="submit" value="Post">
+      </form>
+    </div>
   </body>
 </html>
