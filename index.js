@@ -6,7 +6,7 @@ var express = require('express'),
 	session = require("express-session"),
 	_ = require('underscore'),
 	ejs = require('ejs'),
-    keygen = require('keygenerator'),	
+	keygen = require('keygenerator'),	
 	methodOverride = require('method-override'),
 	cookieParser = require('cookie-parser');
 
