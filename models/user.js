@@ -2,21 +2,26 @@ var mongoose = require ('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt');
 
-var Question = new Schema({
-  answer: String,
-  person: String
+var questionSchema = new Schema({
+  question: {
+    type: String,
+    required: true
+  },
+  person: {
+    type: String,
+    required: true
+  }
 });
 
 var userSchema = new Schema({
-	username: {
-		type: String,
-		required: true
-	},
-  passwordDigest: {
-		type: String,
+  username: {
+    type: String,
     required: true
-	},
-  questions: [Question],
+  },
+  passwordDigest: {
+    type: String,
+    required: true
+  },
   // image: {
   //   type: String,
   // },
@@ -27,7 +32,7 @@ var userSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now()
-	 }
+   }
 });
 
 userSchema.statics.createSecure = function (username, password, cb) {
@@ -57,6 +62,6 @@ userSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-var Question = mongoose.model('Question', Question);
+var question = mongoose.model('Question', questionSchema);
 var user = mongoose.model('user', userSchema);
 module.exports = user;

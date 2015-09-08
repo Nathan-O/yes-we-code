@@ -19,6 +19,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser('A secret'));
 
 app.use('/static', express.static('public'));
+app.use("/vendor", express.static("bower_components"));
+
+var questions =[
+  {id: 0, question: "What is Node.js?", user: "noob948"},
+  {id: 1, question: "How do I render JSON objects to an HTML page?", user: "datalov3r"},
+  {id: 2, question: "What language should I learn after Javascript?", user: "javascriptwizard03"},
+  {id: 3, question: "HELP, site is broken!", user: "lostgirl97"},
+  {id: 4, question: "How do I do I render giphy cats to my page using their API?", user: "catlady2394"}
+];
 
 // creating the session
 app.use(session ({
@@ -133,18 +142,25 @@ app.get('/questions', function (req, res) {
 		} else {
 			res.render('questions');
 		}
+	// db.Question.find({}, function(err, questions){
+ //        if (err) {
+ //            return res.sendStatus(400);
+ //        }
+ //        res.send(questions);
 	});
 });
 
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
-	user.questions.create(newQuestion, function (err, question_list) {
-		if (err) {
-			console.log(err);
-			return res.sendStatus(404);
-		}
-		res.send(question_list);
-	});
+	// db.Question.create(newQuestion, function (err, questions) {
+		// if (err) {
+		// 	console.log(err);
+		// 	return res.sendStatus(404);
+		// }
+		  newQuestion.id = questions[questions.length - 1].id + 1;
+  		questions.push(newQuestion);
+		res.send(questions);
+	// });
 });
 
 app.delete(['/sessions', '/logout'], function (req, res) {
