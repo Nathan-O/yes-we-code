@@ -2,6 +2,11 @@ var mongoose = require ('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt');
 
+var Question = new Schema({
+  answer: String,
+  person: String
+});
+
 var userSchema = new Schema({
 	username: {
 		type: String,
@@ -11,6 +16,7 @@ var userSchema = new Schema({
 		type: String,
     required: true
 	},
+  questions: [Question],
   // image: {
   //   type: String,
   // },
@@ -51,5 +57,6 @@ userSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
+var Question = mongoose.model('Question', Question);
 var user = mongoose.model('user', userSchema);
 module.exports = user;

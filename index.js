@@ -138,10 +138,10 @@ app.get('/questions', function (req, res) {
 
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
-	db.Question.create(newQuestion, function (err, question_list) {
+	user.questions.create(newQuestion, function (err, question_list) {
 		if (err) {
 			console.log(err);
-			return res.sendStatus(400);
+			return res.sendStatus(404);
 		}
 		res.send(question_list);
 	});
