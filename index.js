@@ -85,7 +85,7 @@ app.post(['/users', '/signup'], function (req, res) {
 		// if (user) {
 		req.login(user);
 	 //      	res.cookie('guid', user._id, {signed: true});
-	    res.redirect('/profile');
+	    res.redirect('profile');
 		// } else {
 	 //        res.redirect('/signup');
 		// }
@@ -103,12 +103,12 @@ app.post(['/sessions', '/login'], function (req, res) {
 		if (user){
 			req.login(user);
 		 	res.cookie('guid', user._id, {signed: true});
-			res.redirect('/profile');
+			res.redirect('profile');
 		} else if (err) {
 			console.log('No access for you!');
 			res.redirect('/');
 		} else {
-			res.redirect('/login');
+			res.redirect('login');
 		}
 	});
 });
