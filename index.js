@@ -2,6 +2,8 @@ var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	db = require('./models'),
+	mongoose = require('mongoose'),
+	Question = mongoose.model('Question'),
 	path = require('path'),
 	session = require("express-session"),
 	_ = require('underscore'),
@@ -136,31 +138,31 @@ app.get('/profile', function (req, res) {
 
 app.get('/questions', function (req, res) {
 	// user will only see questions page if logged in
-	req.currentUser(function (err, user) {
-		if (user === null) {
-			res.redirect('/');
-		} else {
-			res.render('questions');
-		}
-	// db.Question.find({}, function(err, questions){
- //        if (err) {
- //            return res.sendStatus(400);
- //        }
- //        res.send(questions);
+	// req.currentUser(function (err, user) {
+	// 	if (user === null) {
+	// 		res.redirect('/');
+	// 	} else {
+	// 		res.render('questions');
+	// 	}
+	Question.find({}, function(err, questions){
+        if (err) {
+            return res.sendStatus(400);
+        }
+        res.render('questions');
 	});
 });
 
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
-	// db.Question.create(newQuestion, function (err, questions) {
-		// if (err) {
-		// 	console.log(err);
-		// 	return res.sendStatus(404);
-		// }
-		  newQuestion.id = questions[questions.length - 1].id + 1;
-  		questions.push(newQuestion);
-		res.send(questions);
-	// });
+	Question.create(newQuestion, function (err, questions) {
+		if (err) {
+			console.log(err);
+			return res.sendStatus(400);
+		}
+		// newQuestion.id = questions[questions.length - 1].id + 1;
+  // 		questions.push(newQuestion);
+		res.send('great ' + questions);
+	});
 });
 
 app.delete(['/sessions', '/logout'], function (req, res) {

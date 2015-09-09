@@ -36,7 +36,7 @@ function deleteQuestion(content) {
     url: '/questions/' + id,
     type: 'DELETE',
     success: function(res) {
-      getPhrases();
+      getQuestions();
       alert('Question deleted!');
     }
   });

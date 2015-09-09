@@ -1,41 +1,36 @@
 var mongoose = require ('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    Answer = require('./answer.js');
 
-var questionSchema = new Schema({
+var Question = new Schema({
   question: {
     type: String,
     required: true
   },
-  person: {
-    type: String,
-    required: true
-  }
+  answers: [Answer]
 });
 
-var userSchema = new Schema({
+var UserSchema = new Schema({
   username: {
     type: String,
     required: true
+  },
+  questions: {
+    questions: [Question],
+    default: []
   },
   passwordDigest: {
     type: String,
     required: true
   },
-  // image: {
-  //   type: String,
-  // },
-  // language: {
-  //   type: String,
-  //   required: true
-  // },
   createdAt: {
     type: Date,
     default: Date.now()
-   }
+  }
 });
 
-userSchema.statics.createSecure = function (username, password, cb) {
+UserSchema.statics.createSecure = function (username, password, cb) {
   var _this = this;
     bcrypt.hash(password, 10, function (err, hash) {
       var user = {
@@ -46,7 +41,7 @@ userSchema.statics.createSecure = function (username, password, cb) {
   });
 };
 
-userSchema.statics.authenticate = function (username, password, cb) {
+UserSchema.statics.authenticate = function (username, password, cb) {
   this.findOne({username: username}, function (err, user) {
     if (user === null) {
       cb('No user with that username', null);
@@ -58,10 +53,11 @@ userSchema.statics.authenticate = function (username, password, cb) {
   });
 };
 
-userSchema.methods.checkPassword = function (password) {
+UserSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-var question = mongoose.model('Question', questionSchema);
-var user = mongoose.model('user', userSchema);
-module.exports = user;
+var Question = mongoose.model('Question', Question);
+var User = mongoose.model('User', UserSchema);
+
+module.exports = User;
