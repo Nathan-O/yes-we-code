@@ -16,8 +16,10 @@ function pageLoad() {
 }
 
 function getQuestions() {
-  $.get('/questions', function(res){
+  $.get('/questions.json', function(res){
+ 	  console.log(res)
     renderQuestions(res)
+ 
   });
 }
 

@@ -11,5 +11,4 @@ var Answer = new Schema({
 });
 
 var Answer = mongoose.model('Answer', Answer);
-
 module.exports = Answer;
