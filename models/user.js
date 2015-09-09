@@ -16,10 +16,7 @@ var UserSchema = new Schema({
     type: String,
     required: true
   },
-  questions: {
-    questions: [Question],
-    default: []
-  },
+  questions: [Question],
   passwordDigest: {
     type: String,
     required: true
