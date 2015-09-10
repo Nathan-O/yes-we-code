@@ -89,17 +89,10 @@ app.post(['/users', '/signup'], function (req, res) {
 	var user = req.body.user;
 	var username = user.username;
 	var password = user.password;
-	// var language = user.language;
-	// var image = user.image;
   	db.User.createSecure(username, password, function(err, user) {
-		// if (err){console.log(err);}
-		// if (user) {
-		req.login(user);
+			req.login(user);
 	 //      	res.cookie('guid', user._id, {signed: true});
 	    res.redirect('profile');
-		// } else {
-	 //        res.redirect('/signup');
-		// }
   });	
 });
 
@@ -147,22 +140,23 @@ app.get('/questions', function (req, res) {
 	});
 });
 
+// questions data is stored here
 app.get('/questions.json', function (req, res) {
 	db.Question.find({}, function (err, questions){
 		if(err) {
-			console.log("some err", err)
-			res.send(err)
+			console.log("some err", err);
+			res.send(err);
 		}
-		res.send(questions)
+		res.send(questions);
 	});
 });
 
-
+// the questions page where users can ask and answer
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
 	req.currentUser(function (err, user) {
-		newQuestion["owner_id"] = user.username
-		console.log(newQuestion)
+		newQuestion["owner_id"] = user.username;
+		console.log(newQuestion);
 		db.Question.create(newQuestion, function (err, questions) {
 			if (err) {
 				console.log(err);
@@ -171,9 +165,10 @@ app.post('/questions', function (req, res) {
 			console.log(questions);
 			res.send(questions);
 		});
-	})
+	});
 });
 
+// enables users to logout
 app.delete(['/sessions', '/logout'], function (req, res) {
 	req.logout();
 	res.redirect('/');
