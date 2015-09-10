@@ -21,13 +21,13 @@ app.use(cookieParser('A secret'));
 app.use('/static', express.static('public'));
 app.use("/vendor", express.static("bower_components"));
 
-var questions =[
-  {_id: 0, question: "What is Node.js?"},
-  {_id: 1, question: "How do I render JSON objects to an HTML page?"},
-  {_id: 2, question: "What language should I learn after Javascript?"},
-  {_id: 3, question: "HELP, site is broken!"},
-  {_id: 4, question: "How do I do I render giphy cats to my page using their API?"}
-];
+// var questions =[
+//   {_id: 0, question: "What is Node.js?"},
+//   {_id: 1, question: "How do I render JSON objects to an HTML page?"},
+//   {_id: 2, question: "What language should I learn after Javascript?"},
+//   {_id: 3, question: "HELP, site is broken!"},
+//   {_id: 4, question: "How do I render giphy cats to my page using their API?"}
+// ];
 
 // creating the session
 app.use(session ({
@@ -77,11 +77,10 @@ app.get('/login', function (req, res) {
 
 // signup route
 app.get('/signup', function (req, res) {
-	db.user.find({}, function(err, user) {
+	db.User.find({}, function(err, user) {
 		if(err){console.log(err)}
 				res.render('signup');
-
-	})
+	});
 });
 
 //signs a user up and takes them to their profile
@@ -155,21 +154,24 @@ app.get('/questions.json', function (req, res) {
 			res.send(err)
 		}
 		res.send(questions)
-	})
+	});
 });
 
 
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
-	console.log(newQuestion)
-	db.Question.create(newQuestion, function (err, questions) {
-		if (err) {
-			console.log(err);
-			return res.sendStatus(400);
-		}
-		console.log(questions);
-		res.send(questions);
-	});
+	req.currentUser(function (err, user) {
+		newQuestion["owner_id"] = user.username
+		console.log(newQuestion)
+		db.Question.create(newQuestion, function (err, questions) {
+			if (err) {
+				console.log(err);
+				return res.sendStatus(400);
+			}
+			console.log(questions);
+			res.send(questions);
+		});
+	})
 });
 
 app.delete(['/sessions', '/logout'], function (req, res) {

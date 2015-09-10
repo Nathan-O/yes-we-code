@@ -12,7 +12,6 @@ function pageLoad() {
 
     $.post('/questions', question)
       .done(function(res){
-        console.log(res);
         getQuestions();
         $('#new-question-form')[0].reset();
       });
@@ -21,8 +20,7 @@ function pageLoad() {
 
 function getQuestions() {
   $.get('/questions.json', function(res){
-    console.log(res)
-    renderQuestions(res) 
+    renderQuestions(res); 
   });
 }
 
@@ -34,6 +32,7 @@ function renderQuestions(questions) {
   $('#question-ul').append(questionItems);
 }
 
+
 function deleteQuestion(content) {
   var id = $(content).data()._id;
   $.ajax({
@@ -42,21 +41,6 @@ function deleteQuestion(content) {
     success: function(res) {
       getQuestions();
       alert('Question deleted!');
-    }
-  });
-}
-
-function update(){
-  $('update').click(function(event){
-    prompt('Type your new question: ');
-  })
-  var updatedQuestion = $('#question').val();
-  $.ajax({
-      url: '/question/',
-      type: 'PUT',
-      data: updatedQuestion,
-      success: function(){
-        window.location.reload();
     }
   });
 }

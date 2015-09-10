@@ -5,7 +5,8 @@ var mongoose = require ('mongoose'),
 var UserSchema = new Schema({
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   passwordDigest: {
     type: String,
