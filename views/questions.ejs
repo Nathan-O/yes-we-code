@@ -19,12 +19,13 @@
       <div class='jumbotron'>
         <h1>Ask a question <small>#ladiescode</small></h1>
       </div>
-      <form id="new-question-form" method='POST' action='/questions'>
-        <input name='question' type='text' placeholder="Don't be shy!">
+      <form id="new-question-form">
+        <input id='question-input' name='question' type='text' placeholder="Don't be shy!">
         <button type='submit'>Post</button>
       </form>
       <br>
-      <ul class="list-group" id="question-ul"></ul>
+      <ul class="list-group" id="question-ul">
+      </ul>
     </div>
     <script type="text/template" id="question-template">
       <div class='list-group'>

@@ -7,8 +7,12 @@ function pageLoad() {
   getQuestions();
   $('#new-question-form').on('submit', function(event){
     event.preventDefault();
-    $.post('/questions', $(this).serialize())
+    var question = {question: $('#question-input').val()}
+    // debugger
+
+    $.post('/questions', question)
       .done(function(res){
+        console.log(res);
         getQuestions();
         $('#new-question-form')[0].reset();
       });
@@ -17,9 +21,8 @@ function pageLoad() {
 
 function getQuestions() {
   $.get('/questions.json', function(res){
- 	  console.log(res)
-    renderQuestions(res)
- 
+    console.log(res)
+    renderQuestions(res) 
   });
 }
 
@@ -28,7 +31,6 @@ function renderQuestions(questions) {
   questionItems = questions.map(function(question) {
     return template(question);
   });
-  $('#question-ul').html('');
   $('#question-ul').append(questionItems);
 }
 

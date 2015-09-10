@@ -1,15 +1,12 @@
 var mongoose = require ('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
-    Answer = require('./answer.js'),
-    Question = require('./question.js');
+    bcrypt = require('bcrypt');
 
 var UserSchema = new Schema({
   username: {
     type: String,
     required: true
   },
-  questions: [Question],
   passwordDigest: {
     type: String,
     required: true
@@ -17,17 +14,20 @@ var UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now()
-  }
+  },
+  question: []
 });
 
 UserSchema.statics.createSecure = function (username, password, cb) {
   var _this = this;
-    bcrypt.hash(password, 10, function (err, hash) {
+  bcrypt.genSalt(function(err, salt){
+    bcrypt.hash(password, salt, function (err, hash) {
       var user = {
         username: username,
         passwordDigest: hash
       };
       _this.create(user, cb);
+    });
   });
 };
 

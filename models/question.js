@@ -1,4 +1,4 @@
-var mongoose = require ('mongoose').
+var mongoose = require ('mongoose'),
   Schema = mongoose.Schema;
 
 var Question = new Schema({
@@ -6,8 +6,12 @@ var Question = new Schema({
     type: String,
     required: true
   },
-  answers: [Answer]
+  owner_id: String,
+  answers: []
 });
 
 var Question = mongoose.model('Question', Question);
 module.exports = Question;
+
+
+

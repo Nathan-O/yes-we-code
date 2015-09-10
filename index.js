@@ -2,8 +2,6 @@ var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	db = require('./models'),
-	mongoose = require('mongoose'),
-	Question = mongoose.model('Question'),
 	path = require('path'),
 	session = require("express-session"),
 	_ = require('underscore'),
@@ -23,13 +21,13 @@ app.use(cookieParser('A secret'));
 app.use('/static', express.static('public'));
 app.use("/vendor", express.static("bower_components"));
 
-// var questions =[
-//   {id: 0, question: "What is Node.js?", user: "noob948"},
-//   {id: 1, question: "How do I render JSON objects to an HTML page?", user: "datalov3r"},
-//   {id: 2, question: "What language should I learn after Javascript?", user: "javascriptwizard03"},
-//   {id: 3, question: "HELP, site is broken!", user: "lostgirl97"},
-//   {id: 4, question: "How do I do I render giphy cats to my page using their API?", user: "catlady2394"}
-// ];
+var questions =[
+  {_id: 0, question: "What is Node.js?"},
+  {_id: 1, question: "How do I render JSON objects to an HTML page?"},
+  {_id: 2, question: "What language should I learn after Javascript?"},
+  {_id: 3, question: "HELP, site is broken!"},
+  {_id: 4, question: "How do I do I render giphy cats to my page using their API?"}
+];
 
 // creating the session
 app.use(session ({
@@ -79,7 +77,11 @@ app.get('/login', function (req, res) {
 
 // signup route
 app.get('/signup', function (req, res) {
-	res.render('signup');
+	db.user.find({}, function(err, user) {
+		if(err){console.log(err)}
+				res.render('signup');
+
+	})
 });
 
 //signs a user up and takes them to their profile
@@ -90,7 +92,6 @@ app.post(['/users', '/signup'], function (req, res) {
 	var password = user.password;
 	// var language = user.language;
 	// var image = user.image;
-
   	db.User.createSecure(username, password, function(err, user) {
 		// if (err){console.log(err);}
 		// if (user) {
@@ -138,38 +139,35 @@ app.get('/profile', function (req, res) {
 
 app.get('/questions', function (req, res) {
 	// user will only see questions page if logged in
-	// req.currentUser(function (err, user) {
-	// 	if (user === null) {
-	// 		res.redirect('/');
-	// 	} else {
-	// 		res.render('questions');
-	// 	}
-  // if (err) {
-  //     return res.sendStatus(400);
-  // }
-  res.render('questions');
-	// Question.find({}, function(err, questions){
-	// });
+	req.currentUser(function (err, user) {
+		if (user === null) {
+			res.redirect('/');
+		} else {
+			res.render('questions');
+		}
+	});
 });
-
 
 app.get('/questions.json', function (req, res) {
-
-  res.send(questions);
-
+	db.Question.find({}, function (err, questions){
+		if(err) {
+			console.log("some err", err)
+			res.send(err)
+		}
+		res.send(questions)
+	})
 });
+
 
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
-	console.log(newQuestion, "new Question")
-	Question.create(newQuestion, function (err, questions) {
+	console.log(newQuestion)
+	db.Question.create(newQuestion, function (err, questions) {
 		if (err) {
 			console.log(err);
 			return res.sendStatus(400);
 		}
-		// newQuestion.id = questions[questions.length - 1].id + 1;
-  // 		questions.push(newQuestion);
-  	console.log(questions)
+		console.log(questions);
 		res.send(questions);
 	});
 });
@@ -184,3 +182,5 @@ app.delete(['/sessions', '/logout'], function (req, res) {
 app.listen(3000, function () {
 	console.log('Code like a girl');
 });
+
+
