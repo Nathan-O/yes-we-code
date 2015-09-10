@@ -21,7 +21,8 @@ app.use(cookieParser('A secret'));
 app.use('/static', express.static('public'));
 app.use("/vendor", express.static("bower_components"));
 
-// var questions =[
+// hardcoded data to make app post questions
+// var questions = [
 //   {_id: 0, question: "What is Node.js?"},
 //   {_id: 1, question: "How do I render JSON objects to an HTML page?"},
 //   {_id: 2, question: "What language should I learn after Javascript?"},
@@ -156,7 +157,6 @@ app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
 	req.currentUser(function (err, user) {
 		newQuestion["owner_id"] = user.username;
-		console.log(newQuestion);
 		db.Question.create(newQuestion, function (err, questions) {
 			if (err) {
 				console.log(err);

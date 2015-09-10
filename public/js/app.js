@@ -5,15 +5,21 @@ $(function() {
 
 function pageLoad() {
   getQuestions();
+  // getAnswers();
   $('#new-question-form').on('submit', function(event){
     event.preventDefault();
     var question = {question: $('#question-input').val()}
     // debugger
 
+    // $('.formHidden').on('submit', function(event){
+    // event.preventDefault();
+    // var hv = $('#h_v').val();
+
     $.post('/questions', question)
       .done(function(res){
         getQuestions();
         $('#new-question-form')[0].reset();
+        // $('#h_v')[0].reset();
       });
   });
 }
