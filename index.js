@@ -172,6 +172,7 @@ app.post('/questions', function (req, res) {
 	});
 });
 
+// allows users to post an answer to the question
 app.post('/questions/answers', function (req, res) {
 	var newAnswer = req.body;
 	req.currentUser(function (err, user) {

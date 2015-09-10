@@ -5,6 +5,7 @@ $(function() {
 
 function pageLoad() {
   getQuestions();
+  getAnswers();
   $('#new-question-form').on('submit', function(event){
     event.preventDefault();
     var question = {question: $('#question-input').val()}
@@ -14,16 +15,10 @@ function pageLoad() {
         $('#new-question-form')[0].reset();
       });
   });
-}
-
-/*
-on pageLoad() for answers
-
-getAnswers();
-$('#formHidden').on('submit'), function(e) {
+  $('#formHidden').on('submit'), function(e) {
   e.preventDefault();
   var answer = {answer: $('#answer-input').val()}
-  $.post('/questions', answer)
+  $.post('/questions/answers', answer)
     .done(function(res){
     getAnswers();
     #('#formHidden')[0].reset();
@@ -32,8 +27,13 @@ $('#formHidden').on('submit'), function(e) {
 }
 
 
+
+// let's play with functions, shall we?
+
+
+
 function getAnswers() {
-  $.get('/answers.json', function(res){
+  $.get('/questions.json', function(res){
     renderQuestions(res); 
   });
 }
@@ -46,7 +46,11 @@ function renderAnswers(answers) {
   $('#question-ul').append(questionItems);
 }
 
-*/
+
+
+
+
+
 
 function getQuestions() {
   $.get('/questions.json', function(res){
@@ -61,7 +65,6 @@ function renderQuestions(questions) {
   });
   $('#question-ul').append(questionItems);
 }
-
 
 function deleteQuestion(content) {
   var id = $(content).data()._id;
