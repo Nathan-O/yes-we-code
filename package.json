@@ -9,8 +9,8 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.1.6",
     "nodemon": "^1.4.1"
-  }
-  "scripts": {
+  },
+  "scripts" : {
   	"start": "node index.js",
     "postinstall": "bower install"
    }
