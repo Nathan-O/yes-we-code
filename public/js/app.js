@@ -44,3 +44,7 @@ function deleteQuestion(content) {
     }
   });
 }
+
+function comment() {
+  $('.formHidden').toggle('fast')
+}

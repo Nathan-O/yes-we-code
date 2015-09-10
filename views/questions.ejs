@@ -19,6 +19,8 @@
       <div class='jumbotron'>
         <h1>Ask a question <small>#ladiescode</small></h1>
       </div>
+
+      
       <form id="new-question-form">
         <input id='question-input' name='question' type='text' placeholder="Don't be shy!">
         <button type='submit'>Post</button>
@@ -29,8 +31,15 @@
     </div>
     <script class='text-center' type="text/template" id="question-template">
       <div class='list-group'><br>
-        <li class="list-group-item"><span class="label label-default">Username: {{= owner_id }} <br></span><br><button data-id="answer" onclick="comment()" type="button" >Answer</button>&nbsp {{= question }}<br>
+        <li class="list-group-item"><span class="label label-default">Username: {{= owner_id }} <br></span>{{= question }}<br>
         </li>
+      </div>
+      <button data-id="answer" onclick="comment()" type="button" >Answer</button><br>
+      <div class="answerForm"><br>
+        <form class="formHidden">
+          <input name='answer' type='text' placeholder="Answer">
+          <button type='submit'>Post</button>
+        </form>
       </div>
     </script>
   </body>
