@@ -172,6 +172,21 @@ app.post('/questions', function (req, res) {
 	});
 });
 
+// app.post('/questions/answers', function (req, res) {
+// 	var newAnswer = req.body;
+// 	req.currentUser(function (err, user) {
+// 		newAnswer["owner_id"] = user.username;
+// 		db.Answer.create(newAnswer, function (err, answers) {
+// 			if (err) {
+// 				console.log(err);
+// 				return res.sendStatus(400);
+// 			}
+// 			console.log(answers);
+// 			res.send(answers);
+// 		});
+// 	});
+// });
+
 // enables users to logout
 app.delete(['/sessions', '/logout'], function (req, res) {
 	req.logout();
