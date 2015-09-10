@@ -91,10 +91,14 @@ app.post(['/users', '/signup'], function (req, res) {
 	var username = user.username;
 	var password = user.password;
   	db.User.createSecure(username, password, function(err, user) {
+			if (user === undefined) {
+				console.log('Choose another username');
+				res.redirect('signup');
+			} else {
 			req.login(user);
-	 //      	res.cookie('guid', user._id, {signed: true});
 	    res.redirect('profile');
-  });	
+	  }
+	});
 });
 
 //creates a user session when login form is submitted
