@@ -5,24 +5,48 @@ $(function() {
 
 function pageLoad() {
   getQuestions();
-  // getAnswers();
   $('#new-question-form').on('submit', function(event){
     event.preventDefault();
     var question = {question: $('#question-input').val()}
-    // debugger
-
-    // $('.formHidden').on('submit', function(event){
-    // event.preventDefault();
-    // var hv = $('#h_v').val();
-
     $.post('/questions', question)
       .done(function(res){
         getQuestions();
         $('#new-question-form')[0].reset();
-        // $('#h_v')[0].reset();
       });
   });
 }
+
+/*
+on pageLoad() for answers
+
+getAnswers();
+$('#formHidden').on('submit'), function(e) {
+  e.preventDefault();
+  var answer = {answer: $('#answer-input').val()}
+  $.post('/questions', answer)
+    .done(function(res){
+    getAnswers();
+    #('#formHidden')[0].reset();
+    });
+  });
+}
+
+
+function getAnswers() {
+  $.get('/answers.json', function(res){
+    renderQuestions(res); 
+  });
+}
+
+function renderAnswers(answers) {
+  template = _.template($('#question-template').html());
+  questionItems = questions.map(function(question) {
+    return template(question);
+  });
+  $('#question-ul').append(questionItems);
+}
+
+*/
 
 function getQuestions() {
   $.get('/questions.json', function(res){
