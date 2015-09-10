@@ -176,8 +176,4 @@ app.delete(['/sessions', '/logout'], function (req, res) {
 
 /* Server */
 
-app.listen(3000, function () {
-	console.log('Code like a girl');
-});
-
-
+app.listen(process.env.PORT || 3000);
