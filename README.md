@@ -1,4 +1,4 @@
-# Project One for WDI
+# Project One
 
 ## DESCRIPTION
 
