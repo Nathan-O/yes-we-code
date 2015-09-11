@@ -27,7 +27,7 @@ StackOverflow is male dominated, as is the tech community in general. During my 
 * **Templating** Backend templating with EJS and rendered the JSON data on the frontend using underscore templates.
 * **Authentication** Enable users to signup, login, and logout.
 * **Data Validation** Validated data by handling incorrect inputs during sign up (currently redirects to signup page if error occurs), with a unique username.
-* **Model Relationship** Created a `has_many` relationship between the User, Questions, and Answers using referenced data.
+* **Model Relationship** Created a `has_many` relationship between the User, Questions, and Answers using embedded data.
 * **Visual Design** Used Twitter Bootstrap and local CSS files to beautify the front-end.
 * **Heroku** Deployed code to Heroku without exposing any secret keys.
 * **Cookies** Added a cookie for every user session.
