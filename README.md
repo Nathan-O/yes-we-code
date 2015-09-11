@@ -11,7 +11,7 @@ The objective of this project is to:
 
 I will be working **individually** for this first project.
 
-## WHAT IS THIS LADY-STACKOVERFLOW YOU SPEAK OF
+## WHAT THE APP IS
 
 StackOverflow is male dominated, as is the tech community in general. As I researched the problem with the lack of girls on [SO](http://meta.stackexchange.com/questions/30411/what-can-stack-overflow-do-to-persuade-female-programmers-to-participate-more) one of the comments actually says 'Perhaps some occupations, like IT, are simply not a woman's job? Strippers are mostly women. So what? Why do women complain they don't get into IT?'. Women in tech are told things like 'you need to go back to playing with my Barbie dolls' (Heather, SO), and this even happens on sites like SO. I believe this pushes many women away, and they are made to feel inferior to men. Women need a place to ask and answer questions where they feel safe and free of judgement. This inspired my site, which is like StackOverflow-but for Women!
 
