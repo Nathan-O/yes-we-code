@@ -4,11 +4,6 @@ var mongoose = require ('mongoose'),
 var Answer = new Schema({
   answer: String, 
   owner_id: String
-  // person: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'User',
-  //   required: true
-  // }
 });
 
 var Answer = mongoose.model('Answer', Answer);
