@@ -96,7 +96,7 @@ app.post(['/users', '/signup'], function (req, res) {
 				res.redirect('signup');
 			} else {
 			req.login(user);
-	    res.redirect('profile');
+	    res.redirect('questions');
 	  }
 	});
 });
@@ -112,7 +112,7 @@ app.post(['/sessions', '/login'], function (req, res) {
 		if (user){
 			req.login(user);
 		 	res.cookie('guid', user._id, {signed: true});
-			res.redirect('profile');
+			res.redirect('questions');
 		} else if (err) {
 			console.log('No access for you!');
 			res.redirect('/');
@@ -160,7 +160,7 @@ app.get('/questions.json', function (req, res) {
 app.post('/questions', function (req, res) {
 	var newQuestion = req.body;
 	req.currentUser(function (err, user) {
-		newQuestion["owner_id"] = user.username;
+		newQuestion['owner_id'] = user.username;
 		db.Question.create(newQuestion, function (err, questions) {
 			if (err) {
 				console.log(err);
@@ -176,15 +176,32 @@ app.post('/questions', function (req, res) {
 app.post('/questions/answers', function (req, res) {
 	var newAnswer = req.body;
 	req.currentUser(function (err, user) {
-		newAnswer["owner_id"] = user.username;
+		newAnswer['owner_id'] = user.username;
 		db.Answer.create(newAnswer, function (err, answers) {
 			if (err) {
 				console.log(err);
 				return res.sendStatus(400);
 			}
 			console.log(answers);
-			res.send(answers);
+			//find the particular question
+			db.Question.findOne({_id: newAnswer.questionID}, function (err, question){
+					if (err){console.log(err);}
+					question.answers.push(answers);
+					question.save();
+					console.log(question)
+					res.sendStatus(202);
+			})
 		});
+	});
+});
+
+app.get('/questions/answers.json', function (req, res) {
+	db.Answer.find({}, function (err, answers){
+		if(err) {
+			console.log("some err", err);
+			res.send(err);
+		}
+		res.send(answers);
 	});
 });
 

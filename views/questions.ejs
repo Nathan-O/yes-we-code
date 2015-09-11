@@ -20,7 +20,6 @@
         <h1>Ask a question <small>#ladiescode</small></h1>
       </div>
 
-      
       <form id="new-question-form">
         <input id='question-input' name='question' type='text' placeholder="Don't be shy!">
         <button type='submit'>Post</button>
@@ -29,18 +28,28 @@
       <ul class="list-group" id="question-ul">
       </ul>
     </div>
-    <script class='text-center' type="text/template" id="question-template">
+
+    <script class='text-center' type="text/template" id='question-template'>
+    <div id = '{{= _id }}' style='display: none'>{{= _id}}</div>
       <div class='list-group'><br>
-        <li class="list-group-item"><span class="label label-default">Username: {{= owner_id }} <br></span>{{= question }}<br>
+        <li class='list-group-item'><span class='label label-default'>Username: {{= owner_id }} <br></span>{{= question }}<br>
         </li>
       </div>
+      <ul class='answer-ul list-group' id='foo{{= _id }}'></ul>
+      
       <button data-id="answer" onclick="comment()" type="button" >Have a solution? Click here!</button><br>
       <div class="answerForm"><br>
         <form id="formHidden">
           <input id='answer-input' name='answer' type='text' placeholder="Answer">
-          <button type='submit'>Post</button>
+          <button class='{{= _id }}' onclick="postAnswers(event)">Post</button>
         </form>
       </div>
+    </script>
+
+    <!--other template-->
+
+    <script class='text-center' type="text/template" id="answer-template">
+      <li class='list-group-item answer-style'><span class='label label-default'>Username: {{= owner_id }} <br></span>{{= answer }}<br>
     </script>
   </body>
 </html>
