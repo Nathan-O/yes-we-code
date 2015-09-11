@@ -13,7 +13,9 @@ I will be working **individually** for this first project.
 
 ## WHAT THE APP IS
 
-StackOverflow is male dominated, as is the tech community in general. As I researched the problem with the lack of girls on [SO](http://meta.stackexchange.com/questions/30411/what-can-stack-overflow-do-to-persuade-female-programmers-to-participate-more) one of the comments actually says 'Perhaps some occupations, like IT, are simply not a woman's job? Strippers are mostly women. So what? Why do women complain they don't get into IT?'. Women in tech are told things like 'you need to go back to playing with my Barbie dolls' (Heather, SO), and this even happens on sites like SO. I believe this pushes many women away, and they are made to feel inferior to men. Women need a place to ask and answer questions where they feel safe and free of judgement. This inspired my site, which is like StackOverflow-but for Women!
+StackOverflow is male dominated, as is the tech community in general. During my research on SO, I encountered a problem with the community. There is a lack of women on [SO](http://meta.stackexchange.com/questions/30411/what-can-stack-overflow-do-to-persuade-female-programmers-to-participate-more) and one of the comments actually says 'Perhaps some occupations, like IT, are simply not a woman's job? Strippers are mostly women. So what? Why do women complain they don't get into IT?'. On top of that, women who code are told things like 'you need to go back to playing with my Barbie dolls' (Heather, SO), and their contributions are valued much less than men's, that is, valued by who made them, not their worth, with misogynistic comments being tolerated everyday.
+
+ This pushes women away because they are made to feel inferior to men, and less important than men. Women need a place to ask and answer questions in a community where they feel safe and judgement-free. This inspired my site, which is like StackOverflow-but for Women! Enjoy :)
 
 ## HOW DOES MY APP WORK
 
