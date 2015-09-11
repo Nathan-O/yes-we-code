@@ -30,5 +30,10 @@ StackOverflow is male dominated, as is the tech community in general. During my 
 * **Model Relationship** Created a `has_many` relationship between the User, Questions, and Answers using referenced data.
 * **Visual Design** Used Twitter Bootstrap and local CSS files to beautify the front-end.
 * **Heroku** Deployed code to Heroku without exposing any secret keys.
-* **Authorization** Disallow users from CRUDing content in other users' profiles (NO ACCESS FOR YOU).
 * **Cookies** Added a cookie for every user session.
+
+## COMING SOON...
+
+* **External API** Enable users to sign up through Facebook and Twitter.
+* **Authorization** Disallow users from CRUDing content in other users' profiles (NO ACCESS FOR YOU).
+* **And more...**
