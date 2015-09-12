@@ -36,4 +36,5 @@ StackOverflow is male dominated, as is the tech community in general. During my 
 
 * **External API** Enable users to sign up through Facebook and Twitter.
 * **Authorization** Disallow users from CRUDing content in other users' profiles (NO ACCESS FOR YOU).
+* **Profile Update** Users will be able to have a profile picture, an awesome profile page, a bio, and a section for favorite languages and libraries.
 * **And more...**
