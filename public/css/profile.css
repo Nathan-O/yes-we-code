@@ -31,3 +31,11 @@ body {
   text-align: left;
   padding-left: 40px;
 }
+ul {
+	display: inline;
+	color: white;
+}
+li {
+	padding-left: 430px;
+	margin-bottom: 20px;
+}

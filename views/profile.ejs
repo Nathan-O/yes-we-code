@@ -19,6 +19,13 @@
        <form id='left-align' method='post' action='/logout?_method=DELETE'>
         <button type='submit' class='logout-btn'>Logout</button>
        </form><br>
-       <h1>Hey there <span class='pink'><%= user.username %>!</span>&#9786</h1>
+       <div class='column'>
+	       <div id='image'></div>
+		<ul>
+			<li>Username: <span class='pink'><%= user.username %>!</span>&#9786</li>
+			<li>Favorite languages: </li>
+			<li>Location: </li>
+		</ul>
+	</div>
   </body>
 </html>

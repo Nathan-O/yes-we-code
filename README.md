@@ -19,7 +19,7 @@ StackOverflow is male dominated, as is the tech community in general. During my 
 
 ## HOW DOES MY APP WORK
 
-* **Express API** I implemented a backend API Express that serves up an html page(s) and a JSON API.
+* **Express API** I implemented a backend Express API that serves up an html page(s) and a JSON API.
 * **RESTful Routes** Designed the routes in a [RESTful](http://restfulrouting.com/mappings/resources) manner.
 * **MongoDB** Persisted three models in a Mongo Database.
 * **AJAX** Leveraged the backend API to fetch JSON asynchronously to the client.
