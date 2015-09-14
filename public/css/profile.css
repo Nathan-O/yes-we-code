@@ -1,23 +1,23 @@
 h1 {
-   font-size: 90px;
-   color: white;
-   font-family: 'Raleway';
-   padding-left: 60px;
+  font-size: 90px;
+  color: white;
+  font-family: 'Raleway';
+  padding-left: 60px;
 }
 body {
-   font-family:'Raleway';
-   background: url("http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif");
-   background-size: cover;
+  font-family:'Raleway';
+  background: url('http://media.giphy.com/media/FlsIgkYQoEHLO/giphy.gif');
+  background-size: cover;
 }
 .navbar-brand,
 .navbar-nav li a {
-    line-height: 70px;
-    height: 70px;
-    padding-top: 0;
-    font-size: 32px;
-    color: white;
-    font-family: 'Raleway';
-    padding-right: 40px;
+  line-height: 70px;
+  height: 70px;
+  padding-top: 0;
+  font-size: 32px;
+  color: white;
+  font-family: 'Raleway';
+  padding-right: 40px;
 }
 .pink {
   color: #F62459;
@@ -34,8 +34,17 @@ body {
 ul {
 	display: inline;
 	color: white;
+	font-size: 40px;
 }
 li {
-	padding-left: 430px;
+	padding-left: 800px;
 	margin-bottom: 20px;
+}
+img {
+	float: left;
+	height: 400px;;
+	display: block;
+	margin: auto;
+	padding-left: 90px;
+	padding-top: 18px;
 }

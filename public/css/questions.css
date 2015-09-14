@@ -1,22 +1,22 @@
 h1 {
-   font-size: 90px;
-   color: white;
-   text-align: left;
-   font-family: 'Raleway';
+  font-size: 90px;
+  color: white;
+  text-align: left;
+  font-family: 'Raleway';
 }
 body {
-   font-family:'Raleway';
-   background-color: #F62459;
+  font-family:'Raleway';
+  background-color: #F62459;
 }
 .navbar-brand,
 .navbar-nav li a {
-    line-height: 70px;
-    height: 70px;
-    padding-top: 0;
-    font-size: 32px;
-    color: white;
-    font-family: 'Raleway';
-    padding-right: 40px;
+  line-height: 70px;
+  height: 70px;
+  padding-top: 0;
+  font-size: 32px;
+  color: white;
+  font-family: 'Raleway';
+  padding-right: 40px;
 }
 form {
 	color: black;
