@@ -1,5 +1,5 @@
 h1 {
-  font-size: 90px;
+   font-size: 90px;
   color: white;
   font-family: 'Raleway';
   padding-left: 60px;
@@ -31,12 +31,12 @@ body {
   text-align: left;
   padding-left: 40px;
 }
-ul {
+.list {
 	display: inline;
 	color: white;
 	font-size: 40px;
 }
-li {
+.info {
 	padding-left: 800px;
 	margin-bottom: 20px;
 }
